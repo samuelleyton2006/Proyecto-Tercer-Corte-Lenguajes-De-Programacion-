@@ -167,9 +167,13 @@ class KMeans:
         
         return self._asignar_clusters(X)
     
-    def plot_clusters(self, width=80, height=20):
+    def plot_clusters(self, width=60, height=20):
         """
-        Genera una visualización ASCII de los clusters (solo para 2D)
+        Genera una visualización ASCII mejorada de los clusters (solo para 2D)
+        
+        Args:
+            width: Ancho del área de gráfica (sin contar ejes)
+            height: Alto del área de gráfica (sin contar ejes)
         
         Returns:
             String con la gráfica ASCII
@@ -190,24 +194,30 @@ class KMeans:
         
         # Padding
         if xmax == xmin:
-            xmin -= 0.5
-            xmax += 0.5
+            xmin -= 1
+            xmax += 1
         if ymax == ymin:
-            ymin -= 0.5
-            ymax += 0.5
+            ymin -= 1
+            ymax += 1
         
-        xpad = (xmax - xmin) * 0.05
-        ypad = (ymax - ymin) * 0.05
+        xpad = (xmax - xmin) * 0.1
+        ypad = (ymax - ymin) * 0.1
         xmin -= xpad
         xmax += xpad
         ymin -= ypad
         ymax += ypad
         
-        # Grid
-        grid = [[' ' for _ in range(width)] for _ in range(height)]
+        # Grid para el área de datos
+        grid = [['·' for _ in range(width)] for _ in range(height)]
         
-        # Caracteres para cada cluster
-        chars = ['*', 'o', '+', 'x', '#', '@', '%', '&']
+        # Caracteres y colores para cada cluster
+        chars = ['●', '■', '▲', '◆', '★', '○', '□', '△']
+        centroid_chars = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧']
+        
+        # Contar puntos por cluster
+        cluster_counts = [0] * self.n_clusters
+        for label in self.labels:
+            cluster_counts[label] += 1
         
         # Dibujar puntos
         for i, punto in enumerate(self.data):
@@ -224,7 +234,7 @@ class KMeans:
             
             grid[row][col] = char
         
-        # Dibujar centroides
+        # Dibujar centroides (después para que se vean encima)
         for i, centroid in enumerate(self.centroids):
             x, y = centroid[0], centroid[1]
             col = int((x - xmin) / (xmax - xmin) * (width - 1))
@@ -233,21 +243,60 @@ class KMeans:
             col = max(0, min(width - 1, col))
             row = max(0, min(height - 1, row))
             
-            grid[row][col] = str(i)  # Centroide marcado con su número
+            grid[row][col] = centroid_chars[i % len(centroid_chars)]
         
-        # Construir output
-        lines = ["=== K-Means Clusters ==="]
-        lines.append(f"Clusters: {self.n_clusters}")
-        lines.append("")
+        # Construir output con marco y ejes
+        lines = []
         
-        for row in grid:
-            lines.append(''.join(row))
+       
+        # Etiquetas del eje Y
+        y_labels = 5  # Número de etiquetas en Y
+        for i, row in enumerate(grid):
+            # Calcular valor Y para esta fila
+            y_val = ymax - (i / (height - 1)) * (ymax - ymin) if height > 1 else ymax
+            
+            # Mostrar etiqueta cada cierto número de filas
+            if i == 0 or i == height - 1 or (height > 5 and i % (height // (y_labels - 1)) == 0):
+                y_str = f"{y_val:6.1f} │"
+            else:
+                y_str = "       │"
+            
+            lines.append(" " + y_str + ''.join(row) + " ")
         
-        lines.append("")
-        lines.append("Leyenda:")
+        # Eje X
+        lines.append(" " + "       └" + "─" * width + " ")
+        
+        # Etiquetas del eje X
+        x_label_line = "        "
+        x_positions = [0, width // 4, width // 2, 3 * width // 4, width - 1]
+        x_labels_str = ""
+        last_pos = 0
+        for pos in x_positions:
+            x_val = xmin + (pos / (width - 1)) * (xmax - xmin) if width > 1 else xmin
+            label = f"{x_val:.1f}"
+            spaces_needed = pos - last_pos - len(label) // 2
+            if spaces_needed > 0:
+                x_labels_str += " " * spaces_needed + label
+                last_pos = pos + len(label) // 2
+        lines.append("║ " + x_label_line + x_labels_str.ljust(width) + " ")
+ 
+        """
+        # Leyenda mejorada con estadísticas
         for i in range(self.n_clusters):
             char = chars[i % len(chars)]
-            lines.append(f"  Cluster {i}: {char}  (Centroide: {i})")
+            centroid_char = centroid_chars[i % len(centroid_chars)]
+            count = cluster_counts[i]
+            pct = (count / len(self.data)) * 100
+            centroid = self.centroids[i]
+            centroid_str = f"({centroid[0]:.2f}, {centroid[1]:.2f})"
+            
+            legend_line = f"  {char} Cluster {i}: {count} puntos ({pct:.1f}%)  |  {centroid_char} Centroide: {centroid_str}"
+            lines.append("║" + legend_line.ljust(width + 10) + "║")
+        
+        lines.append("║" + " " * (width + 10) + "║")
+        lines.append("║" + "  · = espacio vacío".ljust(width + 10) + "║")
+        lines.append("╚" + "═" * (width + 10) + "╝")
+        """
         
         return '\n'.join(lines)
 

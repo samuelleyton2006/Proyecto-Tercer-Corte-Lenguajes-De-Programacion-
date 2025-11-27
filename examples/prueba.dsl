@@ -1,5 +1,5 @@
 
-rng = LCG(seed=42);
+rng = LCG(seed=2);
 
 
 datos = [];
@@ -28,7 +28,7 @@ for (i in range(0, 5)) {
 
 mostrar_tabla(datos);
 
-kmeans = KMeans(n_clusters=3, max_iter=20, seed=123);
+kmeans = KMeans(n_clusters=3, max_iter=40, seed=123);
 kmeans.fit(datos);
 
 centroides = kmeans.centroids;
