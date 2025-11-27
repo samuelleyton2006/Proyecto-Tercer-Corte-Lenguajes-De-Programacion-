@@ -1,4 +1,4 @@
-# Generated from LenguajeDominioEspecifico.g4 by ANTLR 4.13.2
+# Generated from Visitor/LenguajeDominioEspecifico.g4 by ANTLR 4.13.2
 from antlr4 import *
 if "." in __name__:
     from .LenguajeDominioEspecificoParser import LenguajeDominioEspecificoParser
@@ -69,6 +69,11 @@ class LenguajeDominioEspecificoVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionCargarMatriz.
+    def visitExpresionCargarMatriz(self, ctx:LenguajeDominioEspecificoParser.ExpresionCargarMatrizContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionBooleano.
     def visitExpresionBooleano(self, ctx:LenguajeDominioEspecificoParser.ExpresionBooleanoContext):
         return self.visitChildren(ctx)
@@ -81,6 +86,11 @@ class LenguajeDominioEspecificoVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionComparacion.
     def visitExpresionComparacion(self, ctx:LenguajeDominioEspecificoParser.ExpresionComparacionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionLeerArchivo.
+    def visitExpresionLeerArchivo(self, ctx:LenguajeDominioEspecificoParser.ExpresionLeerArchivoContext):
         return self.visitChildren(ctx)
 
 
@@ -176,6 +186,16 @@ class LenguajeDominioEspecificoVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by LenguajeDominioEspecificoParser#parametroPlot.
     def visitParametroPlot(self, ctx:LenguajeDominioEspecificoParser.ParametroPlotContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#escribirArchivo.
+    def visitEscribirArchivo(self, ctx:LenguajeDominioEspecificoParser.EscribirArchivoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#guardarMatriz.
+    def visitGuardarMatriz(self, ctx:LenguajeDominioEspecificoParser.GuardarMatrizContext):
         return self.visitChildren(ctx)
 
 

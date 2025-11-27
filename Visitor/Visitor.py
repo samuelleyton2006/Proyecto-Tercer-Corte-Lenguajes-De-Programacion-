@@ -523,7 +523,7 @@ class Visitor(LenguajeDominioEspecificoVisitor):
         
         X = self.visit(ctx.expresion())
         modelo.fit(X)
-        print(f"✓ K-means entrenado con {modelo.n_clusters} clusters")
+        print(f"K-means entrenado con {modelo.n_clusters} clusters")
         return None
 
     def visitGraficarKMeans(self, ctx):
@@ -556,7 +556,7 @@ class Visitor(LenguajeDominioEspecificoVisitor):
         
         if output_file:
             escribir_txt(output_file, plot_output)
-            print(f"✓ Gráfica guardada en: {output_file}")
+            print(f"Grafica guardada en: {output_file}")
         else:
             print(plot_output)
         
@@ -730,6 +730,35 @@ class Visitor(LenguajeDominioEspecificoVisitor):
         
         tabla = ascii_table(data, **params)
         print(tabla)
+        return None
+
+
+
+    # ----------------------------
+    #      MANEJO DE ARCHIVOS
+    # ----------------------------
+    def visitExpresionLeerArchivo(self, ctx):
+        path = self.visit(ctx.expresion())
+        path = str(path).strip('"').strip("'")
+        return leer_txt(path)
+
+    def visitExpresionCargarMatriz(self, ctx):
+        path = self.visit(ctx.expresion())
+        path = str(path).strip('"').strip("'")
+        return cargar_matriz_csv(path)
+
+    def visitEscribirArchivo(self, ctx):
+        path = self.visit(ctx.nombre)
+        path = str(path).strip('"').strip("'")
+        contenido = self.visit(ctx.contenido)
+        escribir_txt(path, contenido)
+        return None
+
+    def visitGuardarMatriz(self, ctx):
+        path = self.visit(ctx.nombre)
+        path = str(path).strip('"').strip("'")
+        matriz = self.visit(ctx.matriz_expr)
+        guardar_matriz_csv(path, matriz)
         return None
 
 

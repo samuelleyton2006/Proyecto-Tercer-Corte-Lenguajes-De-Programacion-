@@ -18,6 +18,8 @@ instruccion
     | operaciones ';'
     | kmeans
     | graficar
+    | escribirArchivo
+    | guardarMatriz
     ;
 
 // Condicionales IF/ELIF/ELSE con llaves
@@ -60,6 +62,8 @@ expresion
     | STRING                                   # ExpresionString
     | TRUE                                     # ExpresionBooleano
     | FALSE                                    # ExpresionBooleano
+    | 'leer_archivo' '(' expresion ')'         # ExpresionLeerArchivo
+    | 'cargar_matriz' '(' expresion ')'        # ExpresionCargarMatriz
     ;
 
 // Definición de matrices
@@ -102,6 +106,15 @@ parametroPlot
     | 'title' '=' STRING
     | 'show_stats' '=' ('True' | 'False')
     | 'output_file' '=' STRING
+    ;
+
+// Manejo de Archivos
+escribirArchivo
+    : 'escribir_archivo' '(' nombre=expresion ',' contenido=expresion ')' ';'
+    ;
+
+guardarMatriz
+    : 'guardar_matriz' '(' nombre=expresion ',' matriz_expr=expresion ')' ';'
     ;
 
 // Perceptrón multicapa
