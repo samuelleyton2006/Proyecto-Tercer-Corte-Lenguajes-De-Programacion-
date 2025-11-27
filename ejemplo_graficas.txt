@@ -1,8 +1,8 @@
 # Ejemplo de gráficas con guardado automático
 
 # Ejemplo 1: Gráfica simple de puntos
-x_datos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-y_datos = [2, 4, 3, 5, 6, 8, 7, 9, 10, 12];
+x_datos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+y_datos = [2, 4, 3, 5, 6, 8, 7, 9, 10,  12
 
 # Usar la función graficar que guarda automáticamente
 graficar(x_datos, y_datos, title="Datos de ejemplo", output_file="grafica_simple.txt");
