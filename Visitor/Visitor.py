@@ -351,8 +351,35 @@ class Visitor(LenguajeDominioEspecificoVisitor):
         nombre_modelo = ctx.ID().getText()
         modelo = self.memoria.get(nombre_modelo)
         if not modelo:
-            raise ValueError(f"Modelo de regresión '{nombre_modelo}' no encontrado.")
+            raise ValueError(f"Modelo '{nombre_modelo}' no encontrado.")
 
+        # Verificar si es un KMeans (redirigir a su método de graficado)
+        if isinstance(modelo, KMeans):
+            # Extraer parámetros compatibles con KMeans
+            width = 80
+            height = 20
+            output_file = None
+            
+            if ctx.parametrosPlot():
+                for p in ctx.parametrosPlot().parametroPlot():
+                    key = p.getChild(0).getText()
+                    txt = p.getChild(2).getText()
+                    if key == 'width':
+                        width = int(float(txt))
+                    elif key == 'height':
+                        height = int(float(txt))
+                    elif key == 'output_file':
+                        output_file = txt.strip('"').strip("'")
+            
+            plot_output = modelo.plot_clusters(width, height)
+            if output_file:
+                escribir_txt(output_file, plot_output)
+                print(f"Grafica guardada en: {output_file}")
+            else:
+                print(plot_output)
+            return None
+
+        # Si no es KMeans, asumir que es regresión lineal
         # Valores por defecto
         width = 80
         height = 20

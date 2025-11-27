@@ -1,11 +1,9 @@
-# Generador de datos aleatorios para KMeans
+
 rng = LCG(seed=42);
 
-# Crear lista para almacenar los datos
+
 datos = [];
 
-# Generar 15 puntos aleatorios en 2D
-# Grupo 1: puntos alrededor de (2, 2)
 for (i in range(0, 5)) {
     x = rng.randint(0, 4);
     y = rng.randint(0, 4);
@@ -13,7 +11,6 @@ for (i in range(0, 5)) {
     datos.agregar(punto);
 }
 
-# Grupo 2: puntos alrededor de (8, 8)
 for (i in range(0, 5)) {
     x = rng.randint(6, 10);
     y = rng.randint(6, 10);
@@ -21,7 +18,6 @@ for (i in range(0, 5)) {
     datos.agregar(punto);
 }
 
-# Grupo 3: puntos alrededor de (2, 8)
 for (i in range(0, 5)) {
     x = rng.randint(0, 4);
     y = rng.randint(6, 10);
@@ -29,20 +25,12 @@ for (i in range(0, 5)) {
     datos.agregar(punto);
 }
 
-print("=== Datos generados aleatoriamente ===");
-print("Total de puntos:", 15);
+
 mostrar_tabla(datos);
 
-# Aplicar KMeans con 3 clusters
-print("=== Ejecutando KMeans ===");
 kmeans = KMeans(n_clusters=3, max_iter=20, seed=123);
 kmeans.fit(datos);
 
-# Mostrar centroides
-print("=== Centroides encontrados ===");
 centroides = kmeans.centroids;
 mostrar_tabla(centroides);
-
-# Graficar clusters
-print("=== Visualizacion de clusters ===");
 kmeans.plot(width=50, height=20);

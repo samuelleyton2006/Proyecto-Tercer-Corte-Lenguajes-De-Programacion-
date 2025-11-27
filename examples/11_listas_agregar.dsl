@@ -1,13 +1,44 @@
-rr = LCG(seed=50);
-x = [];
-y = [];
-for (i in range(0, 20)) {
-    x.agregar(rr.randint(0, 100));
-    y.agregar(rr.randint(0, 100));
-}
+# =========================================
+# GRÁFICAS DE SENO Y COSENO
+# =========================================
 
-reg = RegresionLineal();
-reg.fit(x, y);
-reg.plot(width=60, height=20, title="Mi Gráfica");
-hola = reg.r2();
-print("R2 Score:", hola);
+print("=== GRÁFICAS TRIGONOMÉTRICAS ===");
+print("");
+
+# -----------------------------------------
+# DATOS PARA SENO Y COSENO (0 a 2π)
+# -----------------------------------------
+
+# Valores de X
+x = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6, 5.8, 6.0, 6.2];
+
+# Valores de Seno
+y_seno = [0.0, 0.199, 0.389, 0.565, 0.717, 0.841, 0.932, 0.985, 1.0, 0.974, 0.909, 0.808, 0.675, 0.516, 0.335, 0.141, -0.058, -0.256, -0.443, -0.612, -0.757, -0.871, -0.951, -0.994, -0.996, -0.959, -0.883, -0.772, -0.631, -0.464, -0.279, -0.083];
+
+# Valores de Coseno
+y_coseno = [1.0, 0.98, 0.921, 0.825, 0.697, 0.54, 0.362, 0.17, -0.029, -0.227, -0.416, -0.589, -0.737, -0.856, -0.942, -0.99, -0.999, -0.967, -0.896, -0.791, -0.654, -0.491, -0.308, -0.111, 0.093, 0.284, 0.469, 0.637, 0.78, 0.886, 0.96, 0.997];
+
+# -----------------------------------------
+# GRÁFICA 1: FUNCIÓN SENO
+# -----------------------------------------
+
+print("Graficando: f(x) = sin(x)");
+print("");
+
+graficar(x, y_seno, width=80, height=20, title="Funcion Seno: f(x) = sin(x)", output_file="seno.txt");
+
+print("");
+
+# -----------------------------------------
+# GRÁFICA 2: FUNCIÓN COSENO
+# -----------------------------------------
+
+print("Graficando: f(x) = cos(x)");
+print("");
+
+graficar(x, y_coseno, width=80, height=20, title="Funcion Coseno: f(x) = cos(x)", output_file="coseno.txt");
+
+print("");
+print("=== GRÁFICAS COMPLETADAS ===");
+print("  ✓ seno.txt");
+print("  ✓ coseno.txt");
