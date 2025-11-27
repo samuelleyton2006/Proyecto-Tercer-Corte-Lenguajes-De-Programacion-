@@ -30,8 +30,6 @@ if __name__ == '__main__':
         
         
     except Exception as e:
-        import traceback        #
-        traceback.print_exc()    # 
         print(f"\n Error de evaluacion: {e}")
         sys.exit(1)
 
