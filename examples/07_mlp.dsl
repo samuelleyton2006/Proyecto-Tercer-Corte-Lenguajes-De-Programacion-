@@ -26,7 +26,7 @@ print("Predicción para [0, 1] (esperado ~1):", p1);
 p2 = mlp.predict([1, 1]);
 print("Predicción para [1, 1] (esperado ~0):", p2);
 
-# Graficar pérdida (comentado por problemas de encoding en Windows)
-# La sintaxis correcta sería:
-# mlp.plot_loss("mlp_loss.txt");
-print("Entrenamiento completado (grafica de perdida omitida por problemas de encoding)");
+# Graficar pérdida
+print("Guardando gráfica de pérdida en 'mlp_loss.txt'...");
+mlp.plot_loss("mlp_loss.txt");
+print("Gráfica guardada exitosamente.");

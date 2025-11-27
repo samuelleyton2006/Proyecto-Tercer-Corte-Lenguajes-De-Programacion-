@@ -1,6 +1,6 @@
 """
 LibreriaGraficas.py
-Gráficas ASCII simples con guardado automático:
+Gráficas ASCII simples con guardado automático y compatibilidad Windows/Linux
  - guardar_puntos(path, xs, ys)
  - print_hist(vals, bins)
  - graficar_puntos_ascii(xs, ys, width, height, title, archivo)
@@ -8,9 +8,24 @@ Gráficas ASCII simples con guardado automático:
  - guardar_grafica_ascii(contenido, archivo)
 """
 
+import sys
+import platform
 from Librerias.LibreriaArchivoGestion import escribir_txt
 
+# Detectar sistema operativo para usar caracteres apropiados
+IS_WINDOWS = platform.system() == 'Windows'
 
+# Caracteres seguros para cada sistema
+if IS_WINDOWS:
+    CHAR_POINT = '*'
+    CHAR_LINE = '*'
+    CHAR_HIST = '#'
+else:
+    CHAR_POINT = '◆'
+    CHAR_LINE = '◆'
+    CHAR_HIST = '█'
+
+ 
 def guardar_puntos(path, xs, ys):
     """Guarda puntos X,Y en formato CSV"""
     lines = []
@@ -30,7 +45,9 @@ def guardar_grafica_ascii(contenido, archivo):
         archivo: Ruta del archivo donde guardar
     """
     try:
-        escribir_txt(archivo, contenido)
+        # En Windows, usar encoding utf-8 explícitamente
+        with open(archivo, 'w', encoding='utf-8') as f:
+            f.write(contenido)
         print(f"✓ Gráfica guardada en: {archivo}")
         return True
     except Exception as e:
@@ -38,9 +55,9 @@ def guardar_grafica_ascii(contenido, archivo):
         return False
 
 
-def graficar_puntos_ascii(xs, ys, width=60, height=20, title=None, archivo=None):
+def graficar_puntos_ascii(xs, ys, width=60, height=20, title=None, archivo=None, conectar=True):
     """
-    Crea un scatter plot ASCII de puntos X,Y
+    Crea un gráfico ASCII de puntos X,Y con líneas conectadas
     
     Args:
         xs: Lista de valores X
@@ -49,6 +66,7 @@ def graficar_puntos_ascii(xs, ys, width=60, height=20, title=None, archivo=None)
         height: Altura de la gráfica
         title: Título opcional
         archivo: Si se proporciona, guarda la gráfica en este archivo
+        conectar: Si True, conecta los puntos con líneas (default: True)
         
     Returns:
         String con la gráfica ASCII
@@ -72,12 +90,41 @@ def graficar_puntos_ascii(xs, ys, width=60, height=20, title=None, archivo=None)
     # Crear grid
     grid = [[' ' for _ in range(width)] for _ in range(height)]
     
-    # Mapear puntos al grid
-    for x, y in zip(xs, ys):
+    # Función auxiliar para mapear coordenadas al grid
+    def map_to_grid(x, y):
         col = int((x - min_x) / (max_x - min_x) * (width - 1))
         row = height - 1 - int((y - min_y) / (max_y - min_y) * (height - 1))
-        if 0 <= row < height and 0 <= col < width:
-            grid[row][col] = '●'
+        col = max(0, min(width - 1, col))
+        row = max(0, min(height - 1, row))
+        return col, row
+    
+    # Si conectar está activado, dibujar líneas entre puntos consecutivos
+    if conectar:
+        for i in range(len(xs) - 1):
+            x1, y1 = xs[i], ys[i]
+            x2, y2 = xs[i + 1], ys[i + 1]
+            
+            col1, row1 = map_to_grid(x1, y1)
+            col2, row2 = map_to_grid(x2, y2)
+            
+            # Dibujar línea usando algoritmo de Bresenham simplificado
+            # Interpolación entre puntos
+            steps = max(abs(col2 - col1), abs(row2 - row1)) + 1
+            
+            for step in range(steps + 1):
+                t = step / max(steps, 1)
+                col = int(col1 + t * (col2 - col1))
+                row = int(row1 + t * (row2 - row1))
+                
+                if 0 <= row < height and 0 <= col < width:
+                    # Usar carácter de línea si la celda está vacía
+                    if grid[row][col] == ' ':
+                        grid[row][col] = '-' if abs(row2 - row1) < abs(col2 - col1) else '|'
+    
+    # Dibujar puntos (sobrescriben las líneas para mejor visibilidad)
+    for x, y in zip(xs, ys):
+        col, row = map_to_grid(x, y)
+        grid[row][col] = CHAR_POINT
     
     # Construir salida
     lines = []
@@ -94,8 +141,13 @@ def graficar_puntos_ascii(xs, ys, width=60, height=20, title=None, archivo=None)
     
     output = "\n".join(lines)
     
-    # Mostrar en consola
-    print(output)
+    # Mostrar en consola con encoding correcto
+    try:
+        print(output)
+    except UnicodeEncodeError:
+        # Fallback: reemplazar caracteres problemáticos
+        safe_output = output.replace('◆', '*').replace('█', '#')
+        print(safe_output)
     
     # Guardar en archivo si se especifica
     if archivo:
@@ -135,7 +187,7 @@ def graficar_linea_ascii(vals, width=60, height=15, title=None, archivo=None):
         col = int(i / max(1, n - 1) * (width - 1)) if n > 1 else 0
         row = height - 1 - int((v - min_v) / (max_v - min_v) * (height - 1))
         if 0 <= row < height and 0 <= col < width:
-            grid[row][col] = '●'
+            grid[row][col] = CHAR_LINE
     
     # Construir salida
     lines = []
@@ -154,8 +206,13 @@ def graficar_linea_ascii(vals, width=60, height=15, title=None, archivo=None):
     
     output = "\n".join(lines)
     
-    # Mostrar en consola
-    print(output)
+    # Mostrar en consola con encoding correcto
+    try:
+        print(output)
+    except UnicodeEncodeError:
+        # Fallback: reemplazar caracteres problemáticos
+        safe_output = output.replace('◆', '*').replace('█', '#')
+        print(safe_output)
     
     # Guardar en archivo si se especifica
     if archivo:
@@ -197,37 +254,21 @@ def print_hist(vals, bins=10, archivo=None):
     lines.append("-" * 60)
     
     for i, c in enumerate(counts):
-        bar = "#" * int(c / max(1, max(counts)) * width)
+        bar = CHAR_HIST * int(c / max(1, max(counts)) * width)
         lines.append(f"{i:02d}: {bar} ({c})")
     
     output = "\n".join(lines)
-    print(output)
+    
+    # Mostrar en consola con encoding correcto
+    try:
+        print(output)
+    except UnicodeEncodeError:
+        # Fallback: reemplazar caracteres problemáticos
+        safe_output = output.replace('◆', '*').replace('█', '#')
+        print(safe_output)
     
     # Guardar en archivo si se especifica
     if archivo:
         guardar_grafica_ascii(output, archivo)
     
     return counts
-
-
-if __name__ == "__main__":
-    print("\n=== Pruebas de LibreriaGraficas ===\n")
-    
-    # Test 1: Histograma
-    print("1. Histograma ASCII:")
-    print_hist([1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5], bins=5)
-    
-    # Test 2: Scatter plot
-    print("\n2. Gráfica de puntos:")
-    xs = [1, 2, 3, 4, 5, 6, 7]
-    ys = [2, 4, 3, 5, 4, 6, 5]
-    graficar_puntos_ascii(xs, ys, width=40, height=15, title="Datos de ejemplo")
-    
-    # Test 3: Gráfica de línea
-    print("\n3. Gráfica de línea:")
-    vals = [1, 3, 2, 5, 4, 6, 5, 7, 6, 8]
-    graficar_linea_ascii(vals, width=50, height=12, title="Serie temporal")
-    
-    # Test 4: Guardar puntos CSV
-    guardar_puntos("puntos_test.csv", [1, 2, 3, 4], [2, 4, 6, 8])
-    print("\n✓ Puntos guardados en puntos_test.csv")

@@ -186,6 +186,7 @@ parametroGraficar
     | 'height' '=' NUMBER
     | 'title' '=' STRING
     | 'output_file' '=' STRING
+    | 'conectar' '=' ('True' | 'False')
     ;
 
 // Impresión

@@ -568,7 +568,7 @@ class Visitor(LenguajeDominioEspecificoVisitor):
     # ----------------------------
     def visitGraficar(self, ctx):
         """
-        Grafica puntos: graficar(x, y, width=60, height=20, title="Mi Gráfica", output_file="plot.txt");
+        Grafica puntos: graficar(x, y, width=60, height=20, title="Mi Gráfica", output_file="plot.txt", conectar=True);
         """
         x = self.visit(ctx.x)
         y = self.visit(ctx.y)
@@ -577,6 +577,7 @@ class Visitor(LenguajeDominioEspecificoVisitor):
         height = 20
         title = None
         output_file = None
+        conectar = True  # Por defecto, conectar puntos
         
         if ctx.parametrosGraficar():
             for p in ctx.parametrosGraficar().parametroGraficar():
@@ -591,9 +592,12 @@ class Visitor(LenguajeDominioEspecificoVisitor):
                     title = txt.strip('"').strip("'")
                 elif key == 'output_file':
                     output_file = txt.strip('"').strip("'")
+                elif key == 'conectar':
+                    conectar = (txt == 'True')
         
-        # Usar graficar_puntos_ascii con guardado automático
-        graficar_puntos_ascii(x, y, width=width, height=height, title=title, archivo=output_file)
+        # Usar graficar_puntos_ascii con parámetro conectar
+        graficar_puntos_ascii(x, y, width=width, height=height, title=title, 
+                             archivo=output_file, conectar=conectar)
         
         return None
 

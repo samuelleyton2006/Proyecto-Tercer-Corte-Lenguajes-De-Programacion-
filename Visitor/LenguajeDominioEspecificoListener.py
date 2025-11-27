@@ -1,4 +1,4 @@
-# Generated from Visitor/LenguajeDominioEspecifico.g4 by ANTLR 4.13.2
+# Generated from LenguajeDominioEspecifico.g4 by ANTLR 4.13.2
 from antlr4 import *
 if "." in __name__:
     from .LenguajeDominioEspecificoParser import LenguajeDominioEspecificoParser
@@ -116,6 +116,15 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#ExpresionCargarMatriz.
+    def enterExpresionCargarMatriz(self, ctx:LenguajeDominioEspecificoParser.ExpresionCargarMatrizContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionCargarMatriz.
+    def exitExpresionCargarMatriz(self, ctx:LenguajeDominioEspecificoParser.ExpresionCargarMatrizContext):
+        pass
+
+
     # Enter a parse tree produced by LenguajeDominioEspecificoParser#ExpresionBooleano.
     def enterExpresionBooleano(self, ctx:LenguajeDominioEspecificoParser.ExpresionBooleanoContext):
         pass
@@ -140,6 +149,15 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
 
     # Exit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionComparacion.
     def exitExpresionComparacion(self, ctx:LenguajeDominioEspecificoParser.ExpresionComparacionContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#ExpresionLeerArchivo.
+    def enterExpresionLeerArchivo(self, ctx:LenguajeDominioEspecificoParser.ExpresionLeerArchivoContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionLeerArchivo.
+    def exitExpresionLeerArchivo(self, ctx:LenguajeDominioEspecificoParser.ExpresionLeerArchivoContext):
         pass
 
 
@@ -311,6 +329,24 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
 
     # Exit a parse tree produced by LenguajeDominioEspecificoParser#parametroPlot.
     def exitParametroPlot(self, ctx:LenguajeDominioEspecificoParser.ParametroPlotContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#escribirArchivo.
+    def enterEscribirArchivo(self, ctx:LenguajeDominioEspecificoParser.EscribirArchivoContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#escribirArchivo.
+    def exitEscribirArchivo(self, ctx:LenguajeDominioEspecificoParser.EscribirArchivoContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#guardarMatriz.
+    def enterGuardarMatriz(self, ctx:LenguajeDominioEspecificoParser.GuardarMatrizContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#guardarMatriz.
+    def exitGuardarMatriz(self, ctx:LenguajeDominioEspecificoParser.GuardarMatrizContext):
         pass
 
 
