@@ -26,6 +26,15 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#AgregarElementoLista.
+    def enterAgregarElementoLista(self, ctx:LenguajeDominioEspecificoParser.AgregarElementoListaContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#AgregarElementoLista.
+    def exitAgregarElementoLista(self, ctx:LenguajeDominioEspecificoParser.AgregarElementoListaContext):
+        pass
+
+
     # Enter a parse tree produced by LenguajeDominioEspecificoParser#condicional.
     def enterCondicional(self, ctx:LenguajeDominioEspecificoParser.CondicionalContext):
         pass
@@ -35,12 +44,21 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by LenguajeDominioEspecificoParser#buclefor.
-    def enterBuclefor(self, ctx:LenguajeDominioEspecificoParser.BucleforContext):
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#BucleForRange.
+    def enterBucleForRange(self, ctx:LenguajeDominioEspecificoParser.BucleForRangeContext):
         pass
 
-    # Exit a parse tree produced by LenguajeDominioEspecificoParser#buclefor.
-    def exitBuclefor(self, ctx:LenguajeDominioEspecificoParser.BucleforContext):
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#BucleForRange.
+    def exitBucleForRange(self, ctx:LenguajeDominioEspecificoParser.BucleForRangeContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#BucleForLista.
+    def enterBucleForLista(self, ctx:LenguajeDominioEspecificoParser.BucleForListaContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#BucleForLista.
+    def exitBucleForLista(self, ctx:LenguajeDominioEspecificoParser.BucleForListaContext):
         pass
 
 
@@ -95,6 +113,15 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
 
     # Exit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionNumero.
     def exitExpresionNumero(self, ctx:LenguajeDominioEspecificoParser.ExpresionNumeroContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#ExpresionLCGRandInt.
+    def enterExpresionLCGRandInt(self, ctx:LenguajeDominioEspecificoParser.ExpresionLCGRandIntContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionLCGRandInt.
+    def exitExpresionLCGRandInt(self, ctx:LenguajeDominioEspecificoParser.ExpresionLCGRandIntContext):
         pass
 
 
@@ -179,6 +206,15 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#ExpresionLCGRand.
+    def enterExpresionLCGRand(self, ctx:LenguajeDominioEspecificoParser.ExpresionLCGRandContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionLCGRand.
+    def exitExpresionLCGRand(self, ctx:LenguajeDominioEspecificoParser.ExpresionLCGRandContext):
+        pass
+
+
     # Enter a parse tree produced by LenguajeDominioEspecificoParser#OperacionMatrizExpr.
     def enterOperacionMatrizExpr(self, ctx:LenguajeDominioEspecificoParser.OperacionMatrizExprContext):
         pass
@@ -230,6 +266,15 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
 
     # Exit a parse tree produced by LenguajeDominioEspecificoParser#OperacionMultDiv.
     def exitOperacionMultDiv(self, ctx:LenguajeDominioEspecificoParser.OperacionMultDivContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#ExpresionCrearLCG.
+    def enterExpresionCrearLCG(self, ctx:LenguajeDominioEspecificoParser.ExpresionCrearLCGContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionCrearLCG.
+    def exitExpresionCrearLCG(self, ctx:LenguajeDominioEspecificoParser.ExpresionCrearLCGContext):
         pass
 
 
@@ -509,6 +554,60 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
 
     # Exit a parse tree produced by LenguajeDominioEspecificoParser#parametroGraficar.
     def exitParametroGraficar(self, ctx:LenguajeDominioEspecificoParser.ParametroGraficarContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#LCGSeed.
+    def enterLCGSeed(self, ctx:LenguajeDominioEspecificoParser.LCGSeedContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#LCGSeed.
+    def exitLCGSeed(self, ctx:LenguajeDominioEspecificoParser.LCGSeedContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#CrearLCGInstruccion.
+    def enterCrearLCGInstruccion(self, ctx:LenguajeDominioEspecificoParser.CrearLCGInstruccionContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#CrearLCGInstruccion.
+    def exitCrearLCGInstruccion(self, ctx:LenguajeDominioEspecificoParser.CrearLCGInstruccionContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#LCGRandInstruccion.
+    def enterLCGRandInstruccion(self, ctx:LenguajeDominioEspecificoParser.LCGRandInstruccionContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#LCGRandInstruccion.
+    def exitLCGRandInstruccion(self, ctx:LenguajeDominioEspecificoParser.LCGRandInstruccionContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#LCGRandIntInstruccion.
+    def enterLCGRandIntInstruccion(self, ctx:LenguajeDominioEspecificoParser.LCGRandIntInstruccionContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#LCGRandIntInstruccion.
+    def exitLCGRandIntInstruccion(self, ctx:LenguajeDominioEspecificoParser.LCGRandIntInstruccionContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#parametrosLCG.
+    def enterParametrosLCG(self, ctx:LenguajeDominioEspecificoParser.ParametrosLCGContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#parametrosLCG.
+    def exitParametrosLCG(self, ctx:LenguajeDominioEspecificoParser.ParametrosLCGContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#parametroLCG.
+    def enterParametroLCG(self, ctx:LenguajeDominioEspecificoParser.ParametroLCGContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#parametroLCG.
+    def exitParametroLCG(self, ctx:LenguajeDominioEspecificoParser.ParametroLCGContext):
         pass
 
 

@@ -19,13 +19,23 @@ class LenguajeDominioEspecificoVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#AgregarElementoLista.
+    def visitAgregarElementoLista(self, ctx:LenguajeDominioEspecificoParser.AgregarElementoListaContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LenguajeDominioEspecificoParser#condicional.
     def visitCondicional(self, ctx:LenguajeDominioEspecificoParser.CondicionalContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by LenguajeDominioEspecificoParser#buclefor.
-    def visitBuclefor(self, ctx:LenguajeDominioEspecificoParser.BucleforContext):
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#BucleForRange.
+    def visitBucleForRange(self, ctx:LenguajeDominioEspecificoParser.BucleForRangeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#BucleForLista.
+    def visitBucleForLista(self, ctx:LenguajeDominioEspecificoParser.BucleForListaContext):
         return self.visitChildren(ctx)
 
 
@@ -56,6 +66,11 @@ class LenguajeDominioEspecificoVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionNumero.
     def visitExpresionNumero(self, ctx:LenguajeDominioEspecificoParser.ExpresionNumeroContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionLCGRandInt.
+    def visitExpresionLCGRandInt(self, ctx:LenguajeDominioEspecificoParser.ExpresionLCGRandIntContext):
         return self.visitChildren(ctx)
 
 
@@ -104,6 +119,11 @@ class LenguajeDominioEspecificoVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionLCGRand.
+    def visitExpresionLCGRand(self, ctx:LenguajeDominioEspecificoParser.ExpresionLCGRandContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LenguajeDominioEspecificoParser#OperacionMatrizExpr.
     def visitOperacionMatrizExpr(self, ctx:LenguajeDominioEspecificoParser.OperacionMatrizExprContext):
         return self.visitChildren(ctx)
@@ -131,6 +151,11 @@ class LenguajeDominioEspecificoVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by LenguajeDominioEspecificoParser#OperacionMultDiv.
     def visitOperacionMultDiv(self, ctx:LenguajeDominioEspecificoParser.OperacionMultDivContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#ExpresionCrearLCG.
+    def visitExpresionCrearLCG(self, ctx:LenguajeDominioEspecificoParser.ExpresionCrearLCGContext):
         return self.visitChildren(ctx)
 
 
@@ -286,6 +311,36 @@ class LenguajeDominioEspecificoVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by LenguajeDominioEspecificoParser#parametroGraficar.
     def visitParametroGraficar(self, ctx:LenguajeDominioEspecificoParser.ParametroGraficarContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#LCGSeed.
+    def visitLCGSeed(self, ctx:LenguajeDominioEspecificoParser.LCGSeedContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#CrearLCGInstruccion.
+    def visitCrearLCGInstruccion(self, ctx:LenguajeDominioEspecificoParser.CrearLCGInstruccionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#LCGRandInstruccion.
+    def visitLCGRandInstruccion(self, ctx:LenguajeDominioEspecificoParser.LCGRandInstruccionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#LCGRandIntInstruccion.
+    def visitLCGRandIntInstruccion(self, ctx:LenguajeDominioEspecificoParser.LCGRandIntInstruccionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#parametrosLCG.
+    def visitParametrosLCG(self, ctx:LenguajeDominioEspecificoParser.ParametrosLCGContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LenguajeDominioEspecificoParser#parametroLCG.
+    def visitParametroLCG(self, ctx:LenguajeDominioEspecificoParser.ParametroLCGContext):
         return self.visitChildren(ctx)
 
 

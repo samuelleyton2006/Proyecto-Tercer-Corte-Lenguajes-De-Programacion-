@@ -183,12 +183,25 @@ def modulo(a,b):
     return a - int(a / b) * b
 
 class LCG:
+    """
+    Generador de números pseudoaleatorios (Linear Congruential Generator).
+    Usa la fórmula: state = (A * state + C) mod M
+    con A=1103515245, C=12345, M=2^31
+    """
     def __init__(self, seed=123456):
         self.state = int(seed) & 0x7fffffff
+    
+    def seed(self, s):
+        """Re-semilla el generador para obtener secuencias reproducibles."""
+        self.state = int(s) & 0x7fffffff
+    
     def rand(self):
+        """Devuelve un float en [0.0, 1.0)"""
         self.state = (1103515245 * self.state + 12345) & 0x7fffffff
         return self.state / 2147483648.0
+    
     def randint(self, a, b):
+        """Devuelve un entero en [a, b] (inclusivo)"""
         return a + int(self.rand() * (b - a + 1))
 
 # ---------- pruebas ----------

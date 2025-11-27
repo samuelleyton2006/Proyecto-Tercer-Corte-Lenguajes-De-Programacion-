@@ -96,7 +96,7 @@ class Visitor(LenguajeDominioEspecificoVisitor):
     # ----------------------------
     #    BUCLES FOR Y WHILE
     # ----------------------------
-    def visitBuclefor(self, ctx):
+    def visitBucleForRange(self, ctx):
         """
         Maneja bucles for con sintaxis: for (i in range(inicio, fin)) { instrucciones }
         """
@@ -108,7 +108,22 @@ class Visitor(LenguajeDominioEspecificoVisitor):
             self.memoria[variable] = i
             for instr in ctx.instruccion():
                 self.visit(instr)
+        return None
+
+    def visitBucleForLista(self, ctx):
+        """
+        Maneja bucles for-each: for (elem in lista) { instrucciones }
+        """
+        variable = ctx.ID().getText()
+        iterable = self.visit(ctx.expresion())
         
+        if not isinstance(iterable, list):
+            raise TypeError(f"El objeto '{iterable}' no es iterable (se esperaba una lista).")
+            
+        for elem in iterable:
+            self.memoria[variable] = elem
+            for instr in ctx.instruccion():
+                self.visit(instr)
         return None
 
     def visitBuclewhile(self, ctx):
@@ -194,10 +209,35 @@ class Visitor(LenguajeDominioEspecificoVisitor):
         return self.visit(ctx.expresion())
 
     def visitExpresionLista(self, ctx):
-        return [self.visit(e) for e in ctx.lista().expresion()]
+        # Si ctx.lista() es None, es una lista vacía o error, pero la gramática dice lista: '[' ... ']'
+        # así que ctx.lista() debería existir.
+        # La regla lista es: lista: '[' (expresion (',' expresion)*)? ']';
+        # Si está vacía, ctx.lista().expresion() será una lista vacía.
+        return self.visit(ctx.lista())
 
     def visitLista(self, ctx):
         """Visita una lista y retorna sus elementos evaluados"""
+        if ctx.expresion():
+            return [self.visit(e) for e in ctx.expresion()]
+        return []
+
+    def visitAgregarElementoLista(self, ctx):
+        """
+        Maneja la instrucción: lista.agregar(valor);
+        """
+        nombre_lista = ctx.ID().getText()
+        valor = self.visit(ctx.expresion())
+        
+        if nombre_lista not in self.memoria:
+            raise ValueError(f"Variable '{nombre_lista}' no definida.")
+        
+        lista = self.memoria[nombre_lista]
+        
+        if not isinstance(lista, list):
+            raise TypeError(f"La variable '{nombre_lista}' no es una lista.")
+        
+        lista.append(valor)
+        return None
         return [self.visit(e) for e in ctx.expresion()]
 
     def visitExpresionMatriz(self, ctx):
@@ -767,6 +807,129 @@ class Visitor(LenguajeDominioEspecificoVisitor):
 
 
     # ----------------------------
+    #    LCG - GENERADOR ALEATORIO
+    # ----------------------------
+    def visitExpresionCrearLCG(self, ctx):
+        """
+        Crea un generador LCG como expresión:
+        rng = LCG(seed=42);
+        rng = LCG();  # usa semilla por defecto
+        """
+        seed = 123456  # Valor por defecto
+        
+        if ctx.parametrosLCG():
+            for p in ctx.parametrosLCG().parametroLCG():
+                # Solo hay un parámetro posible: seed
+                seed_val = self.visit(p.expresion())
+                seed = int(seed_val)
+        
+        return LCG(seed)
+
+    def visitExpresionLCGRand(self, ctx):
+        """
+        Genera un float aleatorio [0.0, 1.0) como expresión:
+        x = rng.rand();
+        """
+        nombre_generador = ctx.ID().getText()
+        generador = self.memoria.get(nombre_generador)
+        
+        if not generador:
+            raise ValueError(f"Generador LCG '{nombre_generador}' no encontrado.")
+        if not isinstance(generador, LCG):
+            raise TypeError(f"'{nombre_generador}' no es un generador LCG.")
+        
+        return generador.rand()
+
+    def visitExpresionLCGRandInt(self, ctx):
+        """
+        Genera un entero aleatorio en [min, max] como expresión:
+        n = rng.randint(1, 10);
+        """
+        nombre_generador = ctx.ID().getText()
+        generador = self.memoria.get(nombre_generador)
+        
+        if not generador:
+            raise ValueError(f"Generador LCG '{nombre_generador}' no encontrado.")
+        if not isinstance(generador, LCG):
+            raise TypeError(f"'{nombre_generador}' no es un generador LCG.")
+        
+        min_val = int(self.visit(ctx.expresion(0)))
+        max_val = int(self.visit(ctx.expresion(1)))
+        
+        return generador.randint(min_val, max_val)
+
+    def visitLCGSeed(self, ctx):
+        """
+        Re-semilla el generador:
+        rng.seed(999);
+        """
+        nombre_generador = ctx.ID().getText()
+        generador = self.memoria.get(nombre_generador)
+        
+        if not generador:
+            raise ValueError(f"Generador LCG '{nombre_generador}' no encontrado.")
+        if not isinstance(generador, LCG):
+            raise TypeError(f"'{nombre_generador}' no es un generador LCG.")
+        
+        seed_val = int(self.visit(ctx.expresion()))
+        generador.seed(seed_val)
+        return None
+
+    def visitCrearLCGInstruccion(self, ctx):
+        """
+        Instrucción: rng = LCG(seed=42);
+        """
+        nombre = ctx.ID(0).getText()
+        seed = 123456
+        
+        if ctx.parametrosLCG():
+            for p in ctx.parametrosLCG().parametroLCG():
+                seed_val = self.visit(p.expresion())
+                seed = int(seed_val)
+        
+        generador = LCG(seed)
+        self.memoria[nombre] = generador
+        return generador
+
+    def visitLCGRandInstruccion(self, ctx):
+        """
+        Instrucción: x = rng.rand();
+        """
+        target = ctx.ID(0).getText()
+        nombre_generador = ctx.ID(1).getText()
+        generador = self.memoria.get(nombre_generador)
+        
+        if not generador:
+            raise ValueError(f"Generador LCG '{nombre_generador}' no encontrado.")
+        if not isinstance(generador, LCG):
+            raise TypeError(f"'{nombre_generador}' no es un generador LCG.")
+        
+        valor = generador.rand()
+        self.memoria[target] = valor
+        return valor
+
+    def visitLCGRandIntInstruccion(self, ctx):
+        """
+        Instrucción: n = rng.randint(1, 10);
+        """
+        target = ctx.ID(0).getText()
+        nombre_generador = ctx.ID(1).getText()
+        generador = self.memoria.get(nombre_generador)
+        
+        if not generador:
+            raise ValueError(f"Generador LCG '{nombre_generador}' no encontrado.")
+        if not isinstance(generador, LCG):
+            raise TypeError(f"'{nombre_generador}' no es un generador LCG.")
+        
+        min_val = int(self.visit(ctx.expresion(0)))
+        max_val = int(self.visit(ctx.expresion(1)))
+        
+        valor = generador.randint(min_val, max_val)
+        self.memoria[target] = valor
+        return valor
+
+
+    # ----------------------------
     #    TABLA DE SÍMBOLOS
     # ----------------------------
     def mostrar_tabla_simbolos(self):
@@ -791,6 +954,8 @@ class Visitor(LenguajeDominioEspecificoVisitor):
                     print(f"  [{i}] {nombre}: PerceptronMulticapa(layers={valor.layers})")
                 elif isinstance(valor, KMeans):
                     print(f"  [{i}] {nombre}: KMeans(n_clusters={valor.n_clusters})")
+                elif isinstance(valor, LCG):
+                    print(f"  [{i}] {nombre}: LCG(state={valor.state})")
                 else:
                     valor_str = str(valor)
                     if len(valor_str) > 50:

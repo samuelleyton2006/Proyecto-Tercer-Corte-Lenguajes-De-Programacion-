@@ -20,6 +20,13 @@ instruccion
     | graficar
     | escribirArchivo
     | guardarMatriz
+    | lcgOperacion
+    | manipulacionLista
+    ;
+
+// Manipulación de Listas
+manipulacionLista
+    : ID '.' 'agregar' '(' expresion ')' ';'   # AgregarElementoLista
     ;
 
 // Condicionales IF/ELIF/ELSE con llaves
@@ -27,9 +34,10 @@ condicional
     : IF '(' expresion ')' '{' instruccion* '}' (ELIF '(' expresion ')' '{' instruccion* '}')* (ELSE '{' instruccion* '}')?
     ;
 
-// Bucle for con llaves
+// Bucle for con llaves (soporta range y listas)
 buclefor
-    : FOR '(' ID IN RANGE '(' expresion ',' expresion ')' ')' '{' instruccion* '}'
+    : FOR '(' ID IN RANGE '(' expresion ',' expresion ')' ')' '{' instruccion* '}'  # BucleForRange
+    | FOR '(' ID IN expresion ')' '{' instruccion* '}'                             # BucleForLista
     ;
 
 // Bucle while con llaves
@@ -54,6 +62,9 @@ expresion
     | MATRIZ '.' operacion=('suma' | 'resta' | 'multiplicar' | 'transpuesta' | 'determinante' | 'inversa') '(' parametrosMatriz ')'  # OperacionMatrizExpr
     | ID '.' 'centroids'                       # AccesoCentroides
     | 'RegresionLineal' '(' ')'                # CrearRegresion
+    | LCG_TOKEN '(' parametrosLCG? ')'         # ExpresionCrearLCG
+    | ID '.' RAND '(' ')'                      # ExpresionLCGRand
+    | ID '.' RANDINT '(' expresion ',' expresion ')'  # ExpresionLCGRandInt
     | operaciones                              # ExpresionOperacion
     | matriz                                   # ExpresionMatriz
     | lista                                    # ExpresionLista
@@ -189,6 +200,22 @@ parametroGraficar
     | 'conectar' '=' ('True' | 'False')
     ;
 
+// LCG - Generador de números pseudoaleatorios (método seed como instrucción)
+lcgOperacion
+    : ID '.' SEED '(' expresion ')' ';'                                        # LCGSeed
+    | ID '=' LCG_TOKEN '(' parametrosLCG? ')' ';'                              # CrearLCGInstruccion
+    | ID '=' ID '.' RAND '(' ')' ';'                                           # LCGRandInstruccion
+    | ID '=' ID '.' RANDINT '(' expresion ',' expresion ')' ';'                # LCGRandIntInstruccion
+    ;
+
+parametrosLCG
+    : parametroLCG (',' parametroLCG)*
+    ;
+
+parametroLCG
+    : SEED '=' expresion
+    ;
+
 // Impresión
 impresion
     : PRINT '(' expresion (',' expresion)* ')' ';'
@@ -250,6 +277,10 @@ MOSTRAR_TABLA: 'mostrar_tabla';
 KMEANS: 'KMeans';
 PERCEPTRON: 'PerceptronMulticapa';
 REGRESION: 'RegresionLineal';
+LCG_TOKEN: 'LCG';
+RAND: 'rand';
+RANDINT: 'randint';
+SEED: 'seed';
 
 // Identificadores (va DESPUÉS de las palabras reservadas)
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
