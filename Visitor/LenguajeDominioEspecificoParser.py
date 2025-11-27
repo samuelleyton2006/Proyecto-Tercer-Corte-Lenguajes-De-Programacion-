@@ -1,4 +1,4 @@
-# Generated from LenguajeDominioEspecifico.g4 by ANTLR 4.13.2
+# Generated from Visitor/LenguajeDominioEspecifico.g4 by ANTLR 4.13.2
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -470,6 +470,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_programa
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrograma" ):
+                listener.enterPrograma(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrograma" ):
+                listener.exitPrograma(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPrograma" ):
                 return visitor.visitPrograma(self)
@@ -568,6 +576,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_instruccion
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInstruccion" ):
+                listener.enterInstruccion(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInstruccion" ):
+                listener.exitInstruccion(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInstruccion" ):
@@ -712,6 +728,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_condicional
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCondicional" ):
+                listener.enterCondicional(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCondicional" ):
+                listener.exitCondicional(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCondicional" ):
                 return visitor.visitCondicional(self)
@@ -847,6 +871,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_buclefor
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBuclefor" ):
+                listener.enterBuclefor(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBuclefor" ):
+                listener.exitBuclefor(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBuclefor" ):
                 return visitor.visitBuclefor(self)
@@ -932,6 +964,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_buclewhile
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBuclewhile" ):
+                listener.enterBuclewhile(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBuclewhile" ):
+                listener.exitBuclewhile(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBuclewhile" ):
                 return visitor.visitBuclewhile(self)
@@ -992,6 +1032,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_comentario
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterComentario" ):
+                listener.enterComentario(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitComentario" ):
+                listener.exitComentario(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitComentario" ):
                 return visitor.visitComentario(self)
@@ -1034,6 +1082,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_asignacion
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAsignacion" ):
+                listener.enterAsignacion(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAsignacion" ):
+                listener.exitAsignacion(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAsignacion" ):
@@ -1093,6 +1149,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ListaContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpresionLista" ):
+                listener.enterExpresionLista(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpresionLista" ):
+                listener.exitExpresionLista(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpresionLista" ):
                 return visitor.visitExpresionLista(self)
@@ -1110,6 +1174,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ExpresionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpresionNot" ):
+                listener.enterExpresionNot(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpresionNot" ):
+                listener.exitExpresionNot(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpresionNot" ):
                 return visitor.visitExpresionNot(self)
@@ -1125,6 +1197,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def NUMBER(self):
             return self.getToken(LenguajeDominioEspecificoParser.NUMBER, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpresionNumero" ):
+                listener.enterExpresionNumero(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpresionNumero" ):
+                listener.exitExpresionNumero(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpresionNumero" ):
@@ -1146,6 +1226,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
                 return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ExpresionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOperacionSumaResta" ):
+                listener.enterOperacionSumaResta(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOperacionSumaResta" ):
+                listener.exitOperacionSumaResta(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitOperacionSumaResta" ):
                 return visitor.visitOperacionSumaResta(self)
@@ -1161,6 +1249,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def STRING(self):
             return self.getToken(LenguajeDominioEspecificoParser.STRING, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpresionString" ):
+                listener.enterExpresionString(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpresionString" ):
+                listener.exitExpresionString(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpresionString" ):
@@ -1180,6 +1276,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def FALSE(self):
             return self.getToken(LenguajeDominioEspecificoParser.FALSE, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpresionBooleano" ):
+                listener.enterExpresionBooleano(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpresionBooleano" ):
+                listener.exitExpresionBooleano(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpresionBooleano" ):
                 return visitor.visitExpresionBooleano(self)
@@ -1196,6 +1300,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def expresion(self):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ExpresionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpresionParentesis" ):
+                listener.enterExpresionParentesis(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpresionParentesis" ):
+                listener.exitExpresionParentesis(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpresionParentesis" ):
@@ -1217,6 +1329,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
                 return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ExpresionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpresionComparacion" ):
+                listener.enterExpresionComparacion(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpresionComparacion" ):
+                listener.exitExpresionComparacion(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpresionComparacion" ):
                 return visitor.visitExpresionComparacion(self)
@@ -1232,6 +1352,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def ID(self):
             return self.getToken(LenguajeDominioEspecificoParser.ID, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpresionVariable" ):
+                listener.enterExpresionVariable(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpresionVariable" ):
+                listener.exitExpresionVariable(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpresionVariable" ):
@@ -1253,6 +1381,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
                 return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ExpresionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpresionLogica" ):
+                listener.enterExpresionLogica(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpresionLogica" ):
+                listener.exitExpresionLogica(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpresionLogica" ):
                 return visitor.visitExpresionLogica(self)
@@ -1273,6 +1409,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ParametrosMatrizContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOperacionMatrizExpr" ):
+                listener.enterOperacionMatrizExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOperacionMatrizExpr" ):
+                listener.exitOperacionMatrizExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitOperacionMatrizExpr" ):
                 return visitor.visitOperacionMatrizExpr(self)
@@ -1289,6 +1433,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def operaciones(self):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.OperacionesContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpresionOperacion" ):
+                listener.enterExpresionOperacion(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpresionOperacion" ):
+                listener.exitExpresionOperacion(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpresionOperacion" ):
@@ -1307,6 +1459,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.MatrizContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpresionMatriz" ):
+                listener.enterExpresionMatriz(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpresionMatriz" ):
+                listener.exitExpresionMatriz(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpresionMatriz" ):
                 return visitor.visitExpresionMatriz(self)
@@ -1323,6 +1483,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def ID(self):
             return self.getToken(LenguajeDominioEspecificoParser.ID, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAccesoCentroides" ):
+                listener.enterAccesoCentroides(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAccesoCentroides" ):
+                listener.exitAccesoCentroides(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAccesoCentroides" ):
                 return visitor.visitAccesoCentroides(self)
@@ -1338,6 +1506,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def REGRESION(self):
             return self.getToken(LenguajeDominioEspecificoParser.REGRESION, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCrearRegresion" ):
+                listener.enterCrearRegresion(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCrearRegresion" ):
+                listener.exitCrearRegresion(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCrearRegresion" ):
@@ -1358,6 +1534,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             else:
                 return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ExpresionContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOperacionMultDiv" ):
+                listener.enterOperacionMultDiv(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOperacionMultDiv" ):
+                listener.exitOperacionMultDiv(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitOperacionMultDiv" ):
@@ -1644,6 +1828,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
                 return self.getTypedRuleContext(LenguajeDominioEspecificoParser.FilaContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMatrizMultiFila" ):
+                listener.enterMatrizMultiFila(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMatrizMultiFila" ):
+                listener.exitMatrizMultiFila(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMatrizMultiFila" ):
                 return visitor.visitMatrizMultiFila(self)
@@ -1663,6 +1855,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             else:
                 return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ExpresionContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMatrizUnidimensional" ):
+                listener.enterMatrizUnidimensional(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMatrizUnidimensional" ):
+                listener.exitMatrizUnidimensional(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMatrizUnidimensional" ):
@@ -1754,6 +1954,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_fila
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFila" ):
+                listener.enterFila(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFila" ):
+                listener.exitFila(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFila" ):
                 return visitor.visitFila(self)
@@ -1813,6 +2021,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_lista
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLista" ):
+                listener.enterLista(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLista" ):
+                listener.exitLista(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLista" ):
@@ -1879,6 +2095,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametrosMatriz
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametrosMatriz" ):
+                listener.enterParametrosMatriz(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametrosMatriz" ):
+                listener.exitParametrosMatriz(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametrosMatriz" ):
@@ -1948,6 +2172,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ParametrosPlotContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGraficarRegresion" ):
+                listener.enterGraficarRegresion(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGraficarRegresion" ):
+                listener.exitGraficarRegresion(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGraficarRegresion" ):
                 return visitor.visitGraficarRegresion(self)
@@ -1972,6 +2204,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
                 return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ExpresionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEntrenarRegresion" ):
+                listener.enterEntrenarRegresion(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEntrenarRegresion" ):
+                listener.exitEntrenarRegresion(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEntrenarRegresion" ):
                 return visitor.visitEntrenarRegresion(self)
@@ -1993,6 +2233,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
                 return self.getTokens(LenguajeDominioEspecificoParser.ID)
             else:
                 return self.getToken(LenguajeDominioEspecificoParser.ID, i)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterObtenerMetricaRegresion" ):
+                listener.enterObtenerMetricaRegresion(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitObtenerMetricaRegresion" ):
+                listener.exitObtenerMetricaRegresion(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitObtenerMetricaRegresion" ):
@@ -2130,6 +2378,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             else:
                 return self.getToken(LenguajeDominioEspecificoParser.ID, i)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPredecirModelo" ):
+                listener.enterPredecirModelo(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPredecirModelo" ):
+                listener.exitPredecirModelo(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPredecirModelo" ):
                 return visitor.visitPredecirModelo(self)
@@ -2188,6 +2444,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametrosPlot
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametrosPlot" ):
+                listener.enterParametrosPlot(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametrosPlot" ):
+                listener.exitParametrosPlot(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametrosPlot" ):
@@ -2249,6 +2513,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametroPlot
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametroPlot" ):
+                listener.enterParametroPlot(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametroPlot" ):
+                listener.exitParametroPlot(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametroPlot" ):
@@ -2388,6 +2660,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ParametrosMLPContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCrearMLP" ):
+                listener.enterCrearMLP(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCrearMLP" ):
+                listener.exitCrearMLP(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCrearMLP" ):
                 return visitor.visitCrearMLP(self)
@@ -2415,6 +2695,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ParametrosEntrenamientoContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEntrenarMLP" ):
+                listener.enterEntrenarMLP(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEntrenarMLP" ):
+                listener.exitEntrenarMLP(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEntrenarMLP" ):
                 return visitor.visitEntrenarMLP(self)
@@ -2432,6 +2720,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             return self.getToken(LenguajeDominioEspecificoParser.ID, 0)
         def STRING(self):
             return self.getToken(LenguajeDominioEspecificoParser.STRING, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGraficarPerdidaMLP" ):
+                listener.enterGraficarPerdidaMLP(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGraficarPerdidaMLP" ):
+                listener.exitGraficarPerdidaMLP(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGraficarPerdidaMLP" ):
@@ -2461,6 +2757,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             else:
                 return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ExpresionContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEvaluarMLP" ):
+                listener.enterEvaluarMLP(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEvaluarMLP" ):
+                listener.exitEvaluarMLP(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEvaluarMLP" ):
@@ -2610,6 +2914,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametrosMLP
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametrosMLP" ):
+                listener.enterParametrosMLP(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametrosMLP" ):
+                listener.exitParametrosMLP(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametrosMLP" ):
                 return visitor.visitParametrosMLP(self)
@@ -2665,6 +2977,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametroMLP
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametroMLP" ):
+                listener.enterParametroMLP(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametroMLP" ):
+                listener.exitParametroMLP(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametroMLP" ):
@@ -2739,6 +3059,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametrosEntrenamiento
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametrosEntrenamiento" ):
+                listener.enterParametrosEntrenamiento(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametrosEntrenamiento" ):
+                listener.exitParametrosEntrenamiento(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametrosEntrenamiento" ):
                 return visitor.visitParametrosEntrenamiento(self)
@@ -2796,6 +3124,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametroEntrenamiento
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametroEntrenamiento" ):
+                listener.enterParametroEntrenamiento(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametroEntrenamiento" ):
+                listener.exitParametroEntrenamiento(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametroEntrenamiento" ):
@@ -2890,6 +3226,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ParametrosKMeansContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCrearKMeans" ):
+                listener.enterCrearKMeans(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCrearKMeans" ):
+                listener.exitCrearKMeans(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCrearKMeans" ):
                 return visitor.visitCrearKMeans(self)
@@ -2909,6 +3253,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ExpresionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEntrenarKMeans" ):
+                listener.enterEntrenarKMeans(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEntrenarKMeans" ):
+                listener.exitEntrenarKMeans(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEntrenarKMeans" ):
                 return visitor.visitEntrenarKMeans(self)
@@ -2927,6 +3279,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def parametrosGraficarKMeans(self):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ParametrosGraficarKMeansContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGraficarKMeans" ):
+                listener.enterGraficarKMeans(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGraficarKMeans" ):
+                listener.exitGraficarKMeans(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGraficarKMeans" ):
@@ -3035,6 +3395,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametrosKMeans
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametrosKMeans" ):
+                listener.enterParametrosKMeans(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametrosKMeans" ):
+                listener.exitParametrosKMeans(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametrosKMeans" ):
                 return visitor.visitParametrosKMeans(self)
@@ -3086,6 +3454,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametroKMeans
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametroKMeans" ):
+                listener.enterParametroKMeans(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametroKMeans" ):
+                listener.exitParametroKMeans(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametroKMeans" ):
@@ -3160,6 +3536,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametrosGraficarKMeans
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametrosGraficarKMeans" ):
+                listener.enterParametrosGraficarKMeans(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametrosGraficarKMeans" ):
+                listener.exitParametrosGraficarKMeans(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametrosGraficarKMeans" ):
                 return visitor.visitParametrosGraficarKMeans(self)
@@ -3214,6 +3598,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametroGraficarKMeans
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametroGraficarKMeans" ):
+                listener.enterParametroGraficarKMeans(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametroGraficarKMeans" ):
+                listener.exitParametroGraficarKMeans(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametroGraficarKMeans" ):
@@ -3297,6 +3689,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_graficar
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGraficar" ):
+                listener.enterGraficar(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGraficar" ):
+                listener.exitGraficar(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGraficar" ):
                 return visitor.visitGraficar(self)
@@ -3363,6 +3763,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametrosGraficar
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametrosGraficar" ):
+                listener.enterParametrosGraficar(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametrosGraficar" ):
+                listener.exitParametrosGraficar(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametrosGraficar" ):
                 return visitor.visitParametrosGraficar(self)
@@ -3417,6 +3825,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametroGraficar
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametroGraficar" ):
+                listener.enterParametroGraficar(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametroGraficar" ):
+                listener.exitParametroGraficar(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametroGraficar" ):
@@ -3503,6 +3919,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_impresion
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterImpresion" ):
+                listener.enterImpresion(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitImpresion" ):
+                listener.exitImpresion(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitImpresion" ):
                 return visitor.visitImpresion(self)
@@ -3567,6 +3991,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_operaciones
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOperaciones" ):
+                listener.enterOperaciones(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOperaciones" ):
+                listener.exitOperaciones(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitOperaciones" ):
@@ -3735,6 +4167,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametrosOp
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametrosOp" ):
+                listener.enterParametrosOp(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametrosOp" ):
+                listener.exitParametrosOp(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametrosOp" ):
                 return visitor.visitParametrosOp(self)
@@ -3797,6 +4237,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
             return self.getTypedRuleContext(LenguajeDominioEspecificoParser.ParametrosTablaContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMostrarTablaASCII" ):
+                listener.enterMostrarTablaASCII(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMostrarTablaASCII" ):
+                listener.exitMostrarTablaASCII(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMostrarTablaASCII" ):
                 return visitor.visitMostrarTablaASCII(self)
@@ -3858,6 +4306,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametrosTabla
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametrosTabla" ):
+                listener.enterParametrosTabla(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametrosTabla" ):
+                listener.exitParametrosTabla(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametrosTabla" ):
@@ -3923,6 +4379,14 @@ class LenguajeDominioEspecificoParser ( Parser ):
 
         def getRuleIndex(self):
             return LenguajeDominioEspecificoParser.RULE_parametroTabla
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParametroTabla" ):
+                listener.enterParametroTabla(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParametroTabla" ):
+                listener.exitParametroTabla(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParametroTabla" ):

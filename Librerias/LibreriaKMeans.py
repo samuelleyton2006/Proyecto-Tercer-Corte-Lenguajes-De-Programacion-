@@ -119,8 +119,12 @@ class KMeans:
             X: Lista de puntos, donde cada punto es una lista de coordenadas
                Ejemplo: [[1, 2], [3, 4], [5, 6]]
         """
-        if not X or not X[0]:
+        if not X:
             raise ValueError("Los datos de entrada no pueden estar vacíos")
+        
+        # Manejar datos 1D
+        if isinstance(X[0], (int, float)):
+            X = [[x] for x in X]
         
         self.data = [punto[:] for punto in X]  # Copia de los datos
         
@@ -156,6 +160,10 @@ class KMeans:
         """
         if self.centroids is None:
             raise ValueError("El modelo no ha sido entrenado. Llama a fit() primero.")
+        
+        # Manejar datos 1D
+        if X and isinstance(X[0], (int, float)):
+            X = [[x] for x in X]
         
         return self._asignar_clusters(X)
     

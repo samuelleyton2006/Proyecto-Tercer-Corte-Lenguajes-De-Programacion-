@@ -492,7 +492,7 @@ class Visitor(LenguajeDominioEspecificoVisitor):
         Crea un modelo K-means: kmeans = KMeans(n_clusters=3, max_iter=100, seed=42);
         """
         nombre = ctx.ID().getText()
-        
+        print(nombre)
         n_clusters = 3
         max_iter = 100
         seed = 1234

@@ -1,4 +1,4 @@
-# Generated from LenguajeDominioEspecifico.g4 by ANTLR 4.13.2
+# Generated from Visitor/LenguajeDominioEspecifico.g4 by ANTLR 4.13.2
 from antlr4 import *
 if "." in __name__:
     from .LenguajeDominioEspecificoParser import LenguajeDominioEspecificoParser
@@ -269,15 +269,6 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by LenguajeDominioEspecificoParser#PredecirRegresion.
-    def enterPredecirRegresion(self, ctx:LenguajeDominioEspecificoParser.PredecirRegresionContext):
-        pass
-
-    # Exit a parse tree produced by LenguajeDominioEspecificoParser#PredecirRegresion.
-    def exitPredecirRegresion(self, ctx:LenguajeDominioEspecificoParser.PredecirRegresionContext):
-        pass
-
-
     # Enter a parse tree produced by LenguajeDominioEspecificoParser#ObtenerMetricaRegresion.
     def enterObtenerMetricaRegresion(self, ctx:LenguajeDominioEspecificoParser.ObtenerMetricaRegresionContext):
         pass
@@ -293,6 +284,15 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
 
     # Exit a parse tree produced by LenguajeDominioEspecificoParser#GraficarRegresion.
     def exitGraficarRegresion(self, ctx:LenguajeDominioEspecificoParser.GraficarRegresionContext):
+        pass
+
+
+    # Enter a parse tree produced by LenguajeDominioEspecificoParser#PredecirModelo.
+    def enterPredecirModelo(self, ctx:LenguajeDominioEspecificoParser.PredecirModeloContext):
+        pass
+
+    # Exit a parse tree produced by LenguajeDominioEspecificoParser#PredecirModelo.
+    def exitPredecirModelo(self, ctx:LenguajeDominioEspecificoParser.PredecirModeloContext):
         pass
 
 
@@ -329,15 +329,6 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
 
     # Exit a parse tree produced by LenguajeDominioEspecificoParser#EntrenarMLP.
     def exitEntrenarMLP(self, ctx:LenguajeDominioEspecificoParser.EntrenarMLPContext):
-        pass
-
-
-    # Enter a parse tree produced by LenguajeDominioEspecificoParser#PredecirMLP.
-    def enterPredecirMLP(self, ctx:LenguajeDominioEspecificoParser.PredecirMLPContext):
-        pass
-
-    # Exit a parse tree produced by LenguajeDominioEspecificoParser#PredecirMLP.
-    def exitPredecirMLP(self, ctx:LenguajeDominioEspecificoParser.PredecirMLPContext):
         pass
 
 
@@ -410,15 +401,6 @@ class LenguajeDominioEspecificoListener(ParseTreeListener):
 
     # Exit a parse tree produced by LenguajeDominioEspecificoParser#EntrenarKMeans.
     def exitEntrenarKMeans(self, ctx:LenguajeDominioEspecificoParser.EntrenarKMeansContext):
-        pass
-
-
-    # Enter a parse tree produced by LenguajeDominioEspecificoParser#PredecirKMeans.
-    def enterPredecirKMeans(self, ctx:LenguajeDominioEspecificoParser.PredecirKMeansContext):
-        pass
-
-    # Exit a parse tree produced by LenguajeDominioEspecificoParser#PredecirKMeans.
-    def exitPredecirKMeans(self, ctx:LenguajeDominioEspecificoParser.PredecirKMeansContext):
         pass
 
 
